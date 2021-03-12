@@ -1,11 +1,10 @@
-from PyQt5 import QtWidgets
-from PyQt5.QtCore import Qt
+from PyQt5 import QtCore, QtWidgets
 import sys
 
 
 class MyWindow(QtWidgets.QMainWindow):
     def __init__(self):
-        super(MyWindow, self).__init__()
+        super().__init__()
         self.setGeometry(0, 0, 400, 200)
         self.setWindowTitle("Switch")
         self.label = None
@@ -16,7 +15,7 @@ class MyWindow(QtWidgets.QMainWindow):
         # Create label
         self.label = QtWidgets.QLabel(self)  # passing window as self
         self.label.setSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        self.label.setAlignment(Qt.AlignCenter)
+        self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setStyleSheet("QLabel {background-color: red;}")
         self.label.setText("OFF")
         # self.label.move(200, 100)
