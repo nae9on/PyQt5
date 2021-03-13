@@ -21,12 +21,6 @@ class DualImageViewer(QtWidgets.QMainWindow):
         self.ui.actionAbout.triggered.connect(self.about)
         self.ui.actionAbout_Qt.triggered.connect(QtWidgets.qApp.aboutQt)
 
-    def about(self):
-        QtWidgets.QMessageBox.about(self, "Dual Image Viewer",
-                          "<p>The <b>Dual Image Viewer</b> example shows how two images "
-                          "can be shown in sync such that an operation (zoom, fit to window etc.)"
-                          " applied to one image is automatically applied to the other. </p>")
-
     def open(self):
         options = QtWidgets.QFileDialog.Options()
         file_name, _ = QtWidgets.QFileDialog.getOpenFileName(self, 'QFileDialog.getOpenFileName()', '',
@@ -46,6 +40,12 @@ class DualImageViewer(QtWidgets.QMainWindow):
 
             if not self.ui.actionFit_to_Window.isChecked():
                 self.ui.imageLabelLeft.adjustSize()
+
+    def about(self):
+        QtWidgets.QMessageBox.about(self, "Dual Image Viewer",
+                                    "<p>The <b>Dual Image Viewer</b> example shows how two images "
+                                    "can be shown in sync such that an operation (zoom, fit to window etc.)"
+                                    " applied to one image is automatically applied to the other. </p>")
 
     def update_actions(self):
         self.ui.actionZoom_In.setEnabled(not self.ui.actionFit_to_Window.isChecked())
