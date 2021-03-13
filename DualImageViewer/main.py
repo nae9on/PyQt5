@@ -25,7 +25,7 @@ class DualImageViewer(QtWidgets.QMainWindow):
         QtWidgets.QMessageBox.about(self, "Dual Image Viewer",
                           "<p>The <b>Dual Image Viewer</b> example shows how two images "
                           "can be shown in sync such that an operation (zoom, fit to window etc.)"
-                          " applied to one image is automatically applied to the other </p>")
+                          " applied to one image is automatically applied to the other. </p>")
 
     def open(self):
         options = QtWidgets.QFileDialog.Options()
@@ -39,8 +39,6 @@ class DualImageViewer(QtWidgets.QMainWindow):
                 return
 
             self.ui.imageLabelLeft.setPixmap(QtGui.QPixmap.fromImage(image))
-            self.ui.imageLabelLeft.setBackgroundRole(QtGui.QPalette.Base)
-            self.scaleFactor = 1.0
 
             self.ui.scrollAreaLeft.setVisible(True)
             self.ui.actionFit_to_Window.setEnabled(True)
