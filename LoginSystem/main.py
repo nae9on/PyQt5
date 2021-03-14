@@ -19,6 +19,7 @@ class LoginSystem(QtWidgets.QMainWindow):
     def connect_signals_and_slots(self):
         self.ui.pushButton.clicked.connect(self.sign_in)
         self.ui.pushButton_2.clicked.connect(self.agree_and_join)
+        self.ui.pushButton_3.clicked.connect(self.show_hide)
 
     def sign_in(self):
         popup_window = QtWidgets.QMessageBox()
@@ -51,7 +52,7 @@ class LoginSystem(QtWidgets.QMainWindow):
         #     print('OK clicked')
 
         try:
-            self.authenticator.add_user(self.ui.lineEdit_3.text(), self.ui.lineEdit_4.text())
+            self.authenticator.add_user(self.ui.lineEdit_3.text(), self.ui.lineEdit_5.text())
         except UsernameAlreadyExists:
             popup_window.setIcon(QtWidgets.QMessageBox.Critical)
             popup_window.setText("Username already exists")
@@ -64,14 +65,17 @@ class LoginSystem(QtWidgets.QMainWindow):
         finally:
             popup_window.exec()
 
+    def show_hide(self):
+        if self.ui.lineEdit_5.echoMode() == QtWidgets.QLineEdit.Normal:
+            self.ui.lineEdit_5.setEchoMode(QtWidgets.QLineEdit.Password)
+            self.ui.pushButton_3.setText("show")
+        else:
+            self.ui.lineEdit_5.setEchoMode(QtWidgets.QLineEdit.Normal)
+            self.ui.pushButton_3.setText("hide")
+
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     widget = LoginSystem()
     widget.show()
     sys.exit(app.exec_())
-
-    #authenticator = Authenticator()
-    #authenticator.add_user("X", "Xpassword")
-    #authenticator.login("X", "Xpassword")
-    #print(authenticator.is_logged_in("X"))
