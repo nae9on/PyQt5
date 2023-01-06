@@ -1,1 +1,1 @@
-# pyqt5_tutorials
+# PyQt5 basic widget examples
